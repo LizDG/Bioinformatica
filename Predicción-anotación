@@ -1,0 +1,32 @@
+Uso de Trim_galore:
+Para remover los adaptadores (en este caso el adaptador universal de Illumina)
+trim_galore --fastqc --paired --retain_unpaired HP8.1.fastq HP8.2.fastq
+
+Uso de Trimmomatic
+java -jar [ruta al archivo trimmomatic-0.36.jar] PE [archivo-input1] [archivo-input2] [paired-output1] [unpaired-output1] [paired-output2] [unpaired-output2] ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+Ejemplo: 
+java -jar /home/liz/Downloads/trimmomatic/Trimmomatic-0.36/Prueba/trimmomatic-0.36.jar PE HP8.1.fastq HP8.2.fastq HP8.1.Tp.fastq HP8.1.Tu.fastq HP8.2.Tp.fastq HP8.2.Tu.fastq ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+
+Dynamictrim
+./SolexaQA++ dynamictrim HP8.2.fastq 
+
+VelveyOptimiser
+/home/liz/Downloads/VelvetOptimiser-2.2.5/VelvetOptimiser.pl --s 15 --e 71 --x 10 -f '-fastq -separate -shortPaired HP8.1.fastq HP8.2.fastq'
+
+Spades 
+/home/liz/Downloads/SPAdes-3.11.0-Linux/bin/spades.py --careful -1 HP8.1.fastq -2 HP8.2.fastq -k 21,31,41,51,61 -o spades8
+
+spades.py --careful -1 HP8.1_val_1.fq -2 HP8.2_val_2.fq -k 33,55,77,99 -o spades_HP8val_v2
+
+Quast
+/home/liz/Downloads/Quast/quast-4.5/quast.py spades_HP8val_v2/contigs.fasta spades-HP8/contigs.fasta spades-HP8val/contigs.fasta -o quast_HP8
+
+Glimmer
+/home/liz/Downloads/glimmer3.02/bin/long-orfs --linear -n -t 1.15 spades91M.fasta run1.longorfs
+/home/liz/Downloads/glimmer3.02/bin/extract spades91M.fasta run1.longorfs > run1.train
+/home/liz/Downloads/glimmer3.02/bin/build-icm -r run1.icm < run1.train
+/home/liz/Downloads/glimmer3.02/bin/glimmer3 -o50 -g110 -t30 spades91M.fasta run1.icm run1
+
+
+
+
