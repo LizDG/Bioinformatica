@@ -18,6 +18,9 @@ Spades
 
 spades.py --careful -1 HP8.1_val_1.fq -2 HP8.2_val_2.fq -k 33,55,77,99 -o spades_HP8val_v2
 
+Mummerplot
+/home/liz/Downloads/mummer-4.0.0beta1/mummerplot -l out.delta
+
 Quast
 /home/liz/Downloads/Quast/quast-4.5/quast.py spades_HP8val_v2/contigs.fasta spades-HP8/contigs.fasta spades-HP8val/contigs.fasta -o quast_HP8
 
