@@ -27,6 +27,9 @@ Mummerplot
 
 Quast
 /home/liz/Downloads/Quast/quast-4.5/quast.py spades_HP8val_v2/contigs.fasta spades-HP8/contigs.fasta spades-HP8val/contigs.fasta -o quast_HP8
+home/liz/Downloads/Quast/quast-4.5/quast.py contigs-dyn.fasta contigs-gal.fasta contigs-trimmo.fasta -o quast-kmers
+--visualizar los resultados
+firefox icarus.html &
 
 Glimmer
 /home/liz/Downloads/glimmer3.02/bin/long-orfs --linear -n -t 1.15 spades91M.fasta run1.longorfs
