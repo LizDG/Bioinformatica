@@ -10,6 +10,10 @@ java -jar /home/liz/Downloads/trimmomatic/Trimmomatic-0.36/Prueba/trimmomatic-0.
 Dynamictrim
 ./SolexaQA++ dynamictrim HP8.2.fastq 
 
+---
+Más información: https://github.com/LizDG/Bioinformatica/blob/master/Trimmings/01-trimm.md
+---
+
 VelveyOptimiser
 /home/liz/Downloads/VelvetOptimiser-2.2.5/VelvetOptimiser.pl --s 15 --e 71 --x 10 -f '-fastq -separate -shortPaired HP8.1.fastq HP8.2.fastq'
 
@@ -17,6 +21,13 @@ Spades
 /home/liz/Downloads/SPAdes-3.11.0-Linux/bin/spades.py --careful -1 HP8.1.fastq -2 HP8.2.fastq -k 21,31,41,51,61 -o spades8
 
 spades.py --careful -1 HP8.1_val_1.fq -2 HP8.2_val_2.fq -k 33,55,77,99 -o spades_HP8val_v2
+
+-----
+Para ver las comparaciones entre trimmers: https://github.com/LizDG/Bioinformatica/blob/master/Comparacion-trims.md
+-----
+
+Nucmer 
+/home/liz/Downloads/mummer-4.0.0beta1/nucmer/home/liz/Downloads/mummer-4.0.0beta1/nucmer HP8_reference.fa S8-galore.fasta
 
 Mummerplot
 /home/liz/Downloads/mummer-4.0.0beta1/mummerplot -l out.delta
@@ -29,7 +40,3 @@ Glimmer
 /home/liz/Downloads/glimmer3.02/bin/extract spades91M.fasta run1.longorfs > run1.train
 /home/liz/Downloads/glimmer3.02/bin/build-icm -r run1.icm < run1.train
 /home/liz/Downloads/glimmer3.02/bin/glimmer3 -o50 -g110 -t30 spades91M.fasta run1.icm run1
-
-
-
-
